@@ -1,28 +1,4 @@
-<html>
-
-<head>
-  <title>Chat</title>
-  <style>
-    input {
-      display: block;
-    }
-
-    ul {
-      list-style: none;
-    }
-  </style>
-</head>
-
-<body>
-  <ul id="messages"></ul>
-  <form id="chatbox">
-    <textarea></textarea>
-    <input type="submit" value="Send" />
-  </form>
-</body>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"> </script>
-<script>
-  $(function() {
+$(function() {
     console.log("Entry here")
     var socket = null;
     var msgBox = $("#chatbox textarea");
@@ -41,7 +17,7 @@
       if (!window["WebSocket"]) { 
         alert("Error: Your browser does not support web  sockets.") 
       } else { 
-        socket = new WebSocket("ws://{{.Host}}/room"); 
+        socket = new WebSocket("ws://localhost:8080/room"); 
         socket.onclose = function() { 
           alert("Connection has been closed."); 
         } 
@@ -50,6 +26,3 @@
         } 
       }
 });
-</script>
-
-</html>
